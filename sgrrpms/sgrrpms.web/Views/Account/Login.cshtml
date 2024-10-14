@@ -1,0 +1,121 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SGRR Property Management">
+    <meta name="author" content="Darbar Shri Guru Ram Rai Ji Maharaj">
+    @*<link rel="shortcut icon" type="image/ico" href="<%= ResolveUrl(" ~ /Images") %>/favicon.ico" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body class="login">
+
+    <div class="user-login-5">
+        <div class="row bs-reset">
+
+            <div class="col-md-6 bs-reset mt-login-5-bsfix">
+                <div class="login-bg" style="background-image: url(/Content/Images/Darbaar.jpg)">
+                </div>
+            </div>
+
+            <div class="col-md-6 login-container bs-reset mt-login-5-bsfix align-content-around">
+                <div class="login-content">
+                    <h2 style="font-weight:600;">
+                        Property Management System<br />
+                        <small>Darbar Shri Guru Ram Rai Ji Maharaaj</small>
+                    </h2>
+                    <form id="form1" class="login-form" onsubmit="return validateForm()">
+
+                        <!-- Message Label -->
+                        <div id="lblMsg"></div>
+
+                        <div class="row">
+                            <!-- Username Input -->
+                            <div class="col-xs-6 mb-4">
+                                <input type="text" id="txtFName" class="form-control form-control-solid placeholder-no-fix form-group" autocomplete="off" placeholder="Username" />
+                                <span id="usernameError" class="validation" style="color:red; display:none;">Please Enter User Name</span>
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="col-xs-6 mb-4">
+                                <input type="password" id="txtPassword" class="form-control form-control-solid placeholder-no-fix form-group" autocomplete="off" placeholder="Password" />
+                                <span id="passwordError" class="validation" style="color:red; display:none;">Please Enter Password</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4 text-right">
+                                <button type="button" id="signInBtn" class="btn green btn-primary">Sign In</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="login-footer">
+                    <div class="row bs-reset">
+                        <div class="col-xs-12 bs-reset">
+                            <div class="login-copyright text-center">
+                                <p>Copright &copy; @DateTime.Now.Year SGRR Education Mission, Design &amp; Developed by: IT Department SGRRIMHS & SMIH</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $("#signInBtn").click(function () {
+            validateForm()
+        });
+        document.getElementById('txtPassword').addEventListener('change', function () {
+            validateForm()
+        });
+        document.getElementById('txtFName').addEventListener('change', function () {
+            validateForm()
+        });
+        // Simple JavaScript validation function
+        function validateForm() {
+            var isValid = true;
+            var valSubmit = document.getElementById('val_submit');
+            // Check username
+            var txtFName = document.getElementById('txtFName');
+            var usernameError = document.getElementById('usernameError');
+            if (txtFName.value.trim() === '') {
+                usernameError.style.display = 'block';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            // Check password
+            var txtPassword = document.getElementById('txtPassword');
+            var passwordError = document.getElementById('passwordError');
+            if (txtPassword.value.trim() === '') {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+            if (!isValid) {
+                valSubmit.style.display = 'block';
+            } else {
+                valSubmit.style.display = 'none';
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
+
